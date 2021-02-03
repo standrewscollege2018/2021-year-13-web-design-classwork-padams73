@@ -1,3 +1,24 @@
-.bg-anotherblue {
+/* New background colours */
+.bg-darkblue {
   background-color: #123456;
+}
+/* Text colours */
+.text-brightyellow {
+  color: #ffff00;
+}
+
+/* Customise navbar */
+.custom-nav {
+  background-color: #123456;
+}
+.custom-nav .nav-link {
+  color: #ffff00;
+}
+
+/* Media query to change font size */
+@media screen and (max-width: 768px){
+  .display-1 {
+    font-size: 60px;
+  }
+
 }
