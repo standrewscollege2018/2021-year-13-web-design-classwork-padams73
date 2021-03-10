@@ -1,3 +1,6 @@
+<div class="container-fluid">
+
+
 <?php
 if(!isset($_GET['tutorgroupID'])) {
   header("Location: index.php");
@@ -12,17 +15,20 @@ if(!isset($_GET['tutorgroupID'])) {
   } else {
     $tutor_aa = mysqli_fetch_assoc($tutor_qry);
     echo "<h1>$tutorcode</h1>";
-
+    echo "<div class='row'>";
     do {
+      echo "<div class='col-md-4'>";
       $firstname = $tutor_aa['firstname'];
       $lastname = $tutor_aa['lastname'];
       $photo = $tutor_aa['photo'];
-      
-      echo "<img src='images/$photo' class=''>";
-      echo "<p>$firstname $lastname</p>";
 
+      echo "<img src='images/$photo' class='img-fluid'>";
+      echo "<p>$firstname $lastname</p>";
+      echo "</div>";
     } while ($tutor_aa = mysqli_fetch_assoc($tutor_qry));
+    echo "</div>";
   }
 }
 
 ?>
+</div>
