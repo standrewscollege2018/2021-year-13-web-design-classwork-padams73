@@ -1,4 +1,14 @@
 <?php
+// Check to see if user is logged in
+session_start();
+if(!isset($_SESSION['admin'])) {
+  // Not logged in, redirect back to index page
+  header("Location: index.php");
+}
+
+ ?>
+
+<?php
 // Check for duplicates first
 $name = $_POST['name'];
 $tutorcode = $_POST['tutorcode'];
@@ -58,7 +68,7 @@ if(mysqli_num_rows($checktutor_qry)==0) {
       $addtutor_sql = "INSERT into tutorgroup (tutor, tutorcode, photo) VALUES ('$name', '$tutorcode', '$photo')";
       $addtutor_qry = mysqli_query($dbconnect, $addtutor_sql);
       echo "$name, $tutorcode";
-      
+
       echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
     } else {
       echo "Sorry, there was an error uploading your file.";

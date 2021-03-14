@@ -1,3 +1,12 @@
+<?php
+// Check to see if user is logged in
+session_start();
+if(!isset($_SESSION['admin'])) {
+  // Not logged in, redirect back to index page
+  header("Location: index.php");
+}
+
+ ?>
 <h1>Add new tutor</h1>
 <form action="index.php?page=entertutor" method="post" enctype="multipart/form-data">
   <div class="mb-3">
