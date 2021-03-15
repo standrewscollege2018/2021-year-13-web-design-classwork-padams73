@@ -22,13 +22,15 @@
         $firstname = $result_aa['firstname'];
         $lastname = $result_aa['lastname'];
         $photo = $result_aa['photo'];
+        $studentID = $result_aa['studentID'];
         ?>
 
         <div class="col-md-4">
 
-
+          <a href="index.php?page=student&studentID=<?php echo $studentID; ?>">
           <img src="images/<?php echo $photo; ?>" class="img-fluid" alt="">
           <p><?php echo "$firstname $lastname"; ?></p>
+        </a>
           </div>
       <?php
         } while ($result_aa = mysqli_fetch_assoc($result_qry));

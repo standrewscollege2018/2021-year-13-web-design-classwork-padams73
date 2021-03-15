@@ -1,6 +1,6 @@
 <?php
 // Check to see if user is logged in
-session_start();
+
 if(!isset($_SESSION['admin'])) {
   // Not logged in, redirect back to index page
   header("Location: index.php");

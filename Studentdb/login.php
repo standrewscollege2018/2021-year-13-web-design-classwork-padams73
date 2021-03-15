@@ -1,6 +1,5 @@
 <?php
 // Check to see if user is logged in
-session_start();
 if(isset($_SESSION['admin'])) {
   // Already logged in, redirect to the admin panel
   header("Location: index.php?page=adminpanel");

@@ -1,4 +1,11 @@
 <?php
+// Check to see if user is logged in
+
+if(!isset($_SESSION['admin'])) {
+  // Not logged in, redirect back to index page
+  header("Location: index.php");
+}
+
 // Check if student has been selected
   if(!isset($_GET['studentID'])) {
     header("Location: index.php?page=updatestudentselect&error=noselect");

@@ -1,10 +1,17 @@
 
 
 <?php
-
+// Select all tutor groups
 $tutor_sql = "SELECT * FROM tutorgroup";
 $tutor_qry = mysqli_query($dbconnect, $tutor_sql);
 $tutor_aa = mysqli_fetch_assoc($tutor_qry);
+
+
+// Select all subjects
+$subject_sql = "SELECT * FROM subject";
+$subject_qry = mysqli_query($dbconnect, $subject_sql);
+$subject_aa = mysqli_fetch_assoc($subject_qry);
+
  ?>
 
 
@@ -18,7 +25,16 @@ $tutor_aa = mysqli_fetch_assoc($tutor_qry);
     <ul class="navbar-nav mr-auto">
       <!-- Login link -->
       <li class="nav-item">
-        <a class="nav-link" href="index.php?page=login">Login </a>
+        <!-- Check if user is already logged in. If so, display admin link -->
+        <?php
+          if(isset($_SESSION['admin'])) {
+            echo "<a class='nav-link' href='index.php?page=adminpanel'>Admin </a>";
+          } else {
+            echo "<a class='nav-link' href='index.php?page=login'>Login </a>";
+          }
+
+         ?>
+
       </li>
 
       <li class="nav-item dropdown">
@@ -38,7 +54,23 @@ $tutor_aa = mysqli_fetch_assoc($tutor_qry);
 
 
       </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Subjects
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <?php
+          do {
+            $subjectID = $subject_aa['subjectID'];
+            $subject = $subject_aa['subject'];
 
+            echo "<a class='dropdown-item' href='index.php?page=subject&subjectID=$subjectID'>$subject</a>";
+
+          } while ($subject_aa = mysqli_fetch_assoc($subject_qry))
+        ?>
+
+
+      </li>
     </ul>
 
     <form class="form-inline my-2 my-lg-0" action="index.php?page=searchresults" method="post">

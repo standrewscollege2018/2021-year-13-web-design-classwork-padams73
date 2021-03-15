@@ -1,3 +1,7 @@
+<?php
+  session_start();
+ ?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -22,7 +26,7 @@
     } else {
       include("home.php");
     }
-  
+
      ?>
 
 

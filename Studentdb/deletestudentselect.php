@@ -1,3 +1,12 @@
+<?php
+// Check to see if user is logged in
+
+if(!isset($_SESSION['admin'])) {
+  // Not logged in, redirect back to index page
+  header("Location: index.php");
+}
+ ?>
+
 <h2>Select student to delete</h2>
 <div class="row">
 
