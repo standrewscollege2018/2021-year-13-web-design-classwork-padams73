@@ -1,3 +1,4 @@
+<!-- This page is where the admin confirms whether or not they will delete the selected student -->
 <?php
 // Check to see if user is logged in
 
@@ -10,6 +11,7 @@ if(!isset($_SESSION['admin'])) {
   if(!isset($_GET['studentID'])) {
     header("Location: index.php?page=deletestudentselect&error=noselect");
   } else {
+    // Get student details so we can display them for the confirmation
     $studentID = $_GET['studentID'];
     $sql = "SELECT * FROM student WHERE studentID = $studentID";
     $qry = mysqli_query($dbconnect, $sql);

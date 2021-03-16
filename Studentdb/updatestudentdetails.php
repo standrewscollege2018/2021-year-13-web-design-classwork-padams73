@@ -1,3 +1,4 @@
+<!-- This page is where the user can change the details of a selected student -->
 <?php
 // Check to see if user is logged in
 
@@ -10,6 +11,7 @@ if(!isset($_SESSION['admin'])) {
   if(!isset($_GET['studentID'])) {
     header("Location: index.php?page=updatestudentselect&error=noselect");
   }
+  // Get existing student details
     $studentID = $_GET['studentID'];
     $sql = "SELECT * FROM student WHERE studentID = $studentID";
     $qry = mysqli_query($dbconnect, $sql);
@@ -19,6 +21,7 @@ if(!isset($_SESSION['admin'])) {
     $photo = $aa['photo'];
     $student_tutorgroupID = $aa['tutorgroupID'];
  ?>
+ <!-- Display details in a form where the user can modify them -->
 <h1>Update student details</h1>
 <form action="index.php?page=updatestudent&studentID=<?php echo $studentID ?>" method="post" enctype="multipart/form-data">
   <div class="mb-3">
@@ -39,6 +42,7 @@ if(!isset($_SESSION['admin'])) {
         $tutor_qry = mysqli_query($dbconnect, $tutor_sql);
         $tutor_aa = mysqli_fetch_assoc($tutor_qry);
         do {
+          // Make sure current tutorgroup is selected by default
           $tutorcode = $tutor_aa['tutorcode'];
           $tutorgroupID = $tutor_aa['tutorgroupID'];
           if ($tutorgroupID==$student_tutorgroupID) {

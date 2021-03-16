@@ -1,4 +1,4 @@
-
+<!-- This is the navbar, which is included in the index page, so appears throughout the site -->
 
 <?php
 // Select all tutor groups
@@ -25,23 +25,25 @@ $subject_aa = mysqli_fetch_assoc($subject_qry);
     <ul class="navbar-nav mr-auto">
       <!-- Login link -->
       <li class="nav-item">
-        <!-- Check if user is already logged in. If so, display admin link -->
+        <!-- Check if user is already logged in.  -->
         <?php
           if(isset($_SESSION['admin'])) {
+            // If logged in, display link to admin panel
             echo "<a class='nav-link' href='index.php?page=adminpanel'>Admin </a>";
           } else {
+            // If not logged in, display login link
             echo "<a class='nav-link' href='index.php?page=login'>Login </a>";
           }
 
          ?>
 
       </li>
-
+      <!-- Display all tutorgroups in a dropdown menu -->
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Tutor groups
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
         <?php
           do {
             $tutorgroupID = $tutor_aa['tutorgroupID'];
@@ -54,6 +56,7 @@ $subject_aa = mysqli_fetch_assoc($subject_qry);
 
 
       </li>
+      <!-- Display all subjects in a dropdown -->
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Subjects
@@ -72,7 +75,7 @@ $subject_aa = mysqli_fetch_assoc($subject_qry);
 
       </li>
     </ul>
-
+<!-- Search bar -->
     <form class="form-inline my-2 my-lg-0" action="index.php?page=searchresults" method="post">
       <input required class="form-control mr-sm-2" type="text" name="search" placeholder="Student name">
       <button type="submit" name="button">Search</button>

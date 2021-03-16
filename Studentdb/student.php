@@ -1,4 +1,11 @@
+<!-- This page displays the student details and a list of their subjects -->
 <?php
+// Check if student has been selected
+// If not, redirect to index page
+if(!isset($_GET['studentID'])) {
+  header("Location:index.php");
+}
+// Get studentID and select all their details
 $studentID = $_GET['studentID'];
 
 $student_sql = "SELECT * FROM student WHERE studentID=$studentID";
@@ -12,10 +19,12 @@ $photo = $student_aa['photo'];
 
 
 ?>
+<!-- Display image and name -->
 <img src="images/<?php echo $photo; ?>" class="img-fluid" alt="">
 <p><?php echo "$firstname $lastname"; ?></p>
 <?php
 echo "<h2>Subjects</h2>";
+// Select all subjects student is signed up for
 $subject_sql = "SELECT subject.subject FROM studentsubject JOIN subject ON studentsubject.subjectID=subject.subjectID WHERE studentsubject.studentID=$studentID";
 $subject_qry = mysqli_query($dbconnect, $subject_sql);
 if(mysqli_num_rows($subject_qry)==0) {

@@ -1,8 +1,9 @@
+<!-- This page checks the username and password of the user -->
 <?php
   session_start();
 
   include("dbconnect.php");
-
+// Get username and password from login page
   $username = $_POST['username'];
   $password = $_POST['password'];
 

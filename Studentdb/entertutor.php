@@ -1,3 +1,4 @@
+<!-- This page adds the new tutor to the database -->
 <?php
 // Check to see if user is logged in
 
@@ -18,10 +19,13 @@ $checktutor_sql = "SELECT * FROM tutorgroup WHERE tutor='$name' or tutorcode='$t
 $checktutor_qry = mysqli_query($dbconnect, $checktutor_sql);
 
 if(mysqli_num_rows($checktutor_qry)==0) {
+// No duplicates, so upload image and add new tutor
 
-
+// $target_dir is the folder where the image will be uploaded to
   $target_dir = "images/";
   $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+// $uploadOK is the variable that checks for anything that would stop the image being uploaded
+// If it is set to 0 for any reason, the upload will stop
   $uploadOk = 1;
   $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
@@ -75,6 +79,7 @@ if(mysqli_num_rows($checktutor_qry)==0) {
     }
   }
 } else {
+  // There is a duplicate, so don't add new tutor
   echo "
   <div class='alert alert-primary' role='alert'>
   This tutor already exists!

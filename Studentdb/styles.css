@@ -1,0 +1,11 @@
+/* Formatting for checkboxes */
+label > input[type="checkbox"] {
+  display: none;
+}
+label > input[type="checkbox"]:checked + * {
+  color: white;
+  padding: 5px;
+  border:solid 1px black;
+  border-radius: 10px;
+  background-color: #123456;
+}

@@ -1,3 +1,4 @@
+<!-- This page logs the admin out by unsetting the admin session -->
 <?php
 // Start sessions running on the page
   session_start();

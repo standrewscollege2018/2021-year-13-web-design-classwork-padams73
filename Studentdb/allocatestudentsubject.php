@@ -1,3 +1,4 @@
+<!-- This page enables the admin to choose a student and select their subjects -->
 <?php
 // Check to see if user is logged in
 
@@ -19,7 +20,8 @@ $student_aa = mysqli_fetch_assoc($student_qry);
  ?>
 
 <form class="" action="index.php?page=assignsubject" method="post">
-  <select class="" name="studentID">
+  <!-- Display a dropdown with a list of all students -->
+  <p><select class="" name="studentID">
     <?php
       do {
         $studentID=$student_aa['studentID'];
@@ -31,12 +33,17 @@ $student_aa = mysqli_fetch_assoc($student_qry);
 
      ?>
   </select>
+</p>
+<!-- Display all subjects that are available
+  Notice that the name of the checkbox is subjectID[]. You need the [] brackets
+  so that all selected items are put into an array called subjectID
+ -->
   <?php
 
     do {
       $subjectID = $subject_aa['subjectID'];
       $subject = $subject_aa['subject'];
-      echo "<p><input type='checkbox' name='subjectID[]' value='$subjectID'>$subject</p>";
+      echo "<p><label><input type='checkbox' name='subjectID[]' value='$subjectID' ><span>$subject</span></label></p>";
     } while ($subject_aa = mysqli_fetch_assoc($subject_qry))
 
    ?>

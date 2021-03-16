@@ -1,3 +1,4 @@
+<!-- Index page acts as a shell page for all others -->
 <?php
   session_start();
  ?>
@@ -11,15 +12,16 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
-    <title>Hello, world!</title>
+    <link rel="stylesheet" href="styles.css">
+    <title>Student database example</title>
   </head>
   <body>
     <?php
       include("dbconnect.php");
 
       include("navbar.php");
-
+    // If a page has been selected (via link) it will be included here.
+    // If no page has been selected, the home.php page is included
     if (isset($_GET['page'])) {
       $page = $_GET['page'];
       include("$page.php");

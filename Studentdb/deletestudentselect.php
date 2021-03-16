@@ -1,3 +1,4 @@
+<!-- This page is where the admin can select the student they wish to delete -->
 <?php
 // Check to see if user is logged in
 
@@ -12,13 +13,14 @@ if(!isset($_SESSION['admin'])) {
 
 
 <?php
-
+// Select all students
   $student_sql = "SELECT * FROM student";
   $student_qry = mysqli_query($dbconnect, $student_sql);
-
+// If there are no students, display a message
   if(mysqli_num_rows($student_qry)==0) {
     echo "<p>No students in database</p>";
   } else {
+    // If there are students, display them as image links
     $student_aa = mysqli_fetch_assoc($student_qry);
 
 
