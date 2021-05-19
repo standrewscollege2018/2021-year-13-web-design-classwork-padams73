@@ -1,6 +1,6 @@
 /* Formatting for checkboxes */
 label > input[type="checkbox"] {
-  display: none;
+  /* display: none; */
 }
 label > input[type="checkbox"]:checked + * {
   color: white;

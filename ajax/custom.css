@@ -1,0 +1,14 @@
+.studentcheckbox input[type=checkbox] {
+    display: none;
+}​
+
+.studentcheckbox input[type=checkbox] + label {
+  color: black;
+}
+.studentcheckbox input[type=checkbox]:checked + label {
+  color: #f00;
+  border: black 2px solid;
+  padding: 5px;
+  border-radius: 3px;
+
+}
